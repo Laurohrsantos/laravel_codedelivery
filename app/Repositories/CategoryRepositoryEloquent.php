@@ -2,10 +2,9 @@
 
 namespace CodeDelivery\Repositories;
 
-use Prettus\Repository\Eloquent\BaseRepository;
-use Prettus\Repository\Criteria\RequestCriteria;
-use CodeDelivery\Repositories\CategoryRepository;
 use CodeDelivery\Models\Category;
+use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class CategoryRepositoryEloquent
@@ -13,6 +12,11 @@ use CodeDelivery\Models\Category;
  */
 class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepository
 {
+    public function lists()
+    {
+        return $this->model->lists('name', 'id');
+    }
+
     /**
      * Specify Model class name
      *

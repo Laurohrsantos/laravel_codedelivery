@@ -29,17 +29,6 @@ class OrdersController extends Controller
         return view('admin.orders.index', compact('orders'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $users = $this->userRepository->lists();
-
-        return view('admin.orders.create', compact('users'));
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -53,16 +42,6 @@ class OrdersController extends Controller
         return redirect()->route('admin.orders.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -72,10 +51,12 @@ class OrdersController extends Controller
      */
     public function edit($id)
     {
+        $list_status = [0=>'Pendente',1=>'A caminho',2=>'Entregue',3=>'Cancelado'];
         $order = $this->orderRepository->find($id);
-        $users = $this->userRepository->lists();
 
-        return view('admin.orders.edit', compact('order','users'));
+        $deliveryman = $this->userRepository->getDeliverymen();
+
+        return view('admin.orders.edit', compact('order', 'list_status', 'deliveryman'));
     }
 
     /**

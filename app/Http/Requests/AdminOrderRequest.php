@@ -22,9 +22,7 @@ class AdminOrderRequest extends Request
     public function rules()
     {
         return [
-            'client_id' => 'required|integer',
             'user_deliveryman_id' => 'required|integer',
-            'total' => 'required',
             'status' => 'required',
         ];
     }

@@ -1,6 +1,10 @@
 <div class="form-group">
-    {!! Form::label('user_id', 'Usuário: ') !!}
-    {!! Form::select('user_id', $users, null, ['class'=>'form-control']) !!}
+    {!! Form::label('name', 'Nome: ') !!}
+    {!! Form::text('user[name]',  null, ['class'=>'form-control']) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('email', 'Email: ') !!}
+    {!! Form::text('user[email]',  null, ['class'=>'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('phone', 'Telefone: ') !!}
@@ -8,7 +12,7 @@
 </div>
 <div class="form-group">
     {!! Form::label('address', 'Endereço: ') !!}
-    {!! Form::text('address', null, ['class'=>'form-control']) !!}
+    {!! Form::textarea('address', null, ['class'=>'form-control']) !!}
 </div>
 <div class="form-group">
     {!! Form::label('city', 'Cidade: ') !!}

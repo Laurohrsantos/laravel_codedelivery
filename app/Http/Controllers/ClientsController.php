@@ -9,16 +9,22 @@ use CodeDelivery\Repositories\CategoryRepository;
 use CodeDelivery\Repositories\ClientRepository;
 use CodeDelivery\Repositories\ProductRepository;
 use CodeDelivery\Repositories\UserRepository;
+use CodeDelivery\Services\ClientService;
 
 class ClientsController extends Controller
 {
     private $clientRepository;
     private $userRepository;
+    /**
+     * @var ClientService
+     */
+    private $clientService;
 
-    public function __construct(ClientRepository $clientRepository, UserRepository $userRepository)
+    public function __construct(ClientRepository $clientRepository, UserRepository $userRepository, ClientService $clientService)
     {
         $this->clientRepository = $clientRepository;
         $this->userRepository = $userRepository;
+        $this->clientService = $clientService;
     }
 
     /**
@@ -52,7 +58,7 @@ class ClientsController extends Controller
      */
     public function store(AdminClientRequest $request)
     {
-        $this->clientRepository->create($request->all());
+        $this->clientService->create($request->all());
         return redirect()->route('admin.clients.index');
     }
 
@@ -90,7 +96,7 @@ class ClientsController extends Controller
      */
     public function update(AdminClientRequest $request, $id)
     {
-        $this->clientRepository->update($request->all(), $id);
+        $this->clientService->update($request->all(), $id);
         return redirect()->route('admin.clients.index');
     }
 
@@ -102,7 +108,7 @@ class ClientsController extends Controller
      */
     public function destroy($id)
     {
-        $this->clientRepository->delete($id);
+        $this->clientService->delete($id);
         return redirect()->route('admin.clients.index');
     }
 }

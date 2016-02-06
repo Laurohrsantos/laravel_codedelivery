@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h3>Categorias</h3>
+        <h3>Produtos</h3>
         <br>
         <a href="{{ route('admin.products.create') }}" class="btn btn-default">Novo Produto</a>
 

@@ -45,9 +45,7 @@ class ClientsController extends Controller
      */
     public function create()
     {
-        $users = $this->userRepository->lists();
-
-        return view('admin.clients.create', compact('users'));
+        return view('admin.clients.create');
     }
 
     /**

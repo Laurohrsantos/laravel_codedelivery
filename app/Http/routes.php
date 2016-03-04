@@ -73,11 +73,17 @@ Route::post('oauth/access_token', function() {
 
 
 Route::group(['prefix'=>'api', 'as'=>'api.', 'middleware'=>'oauth'],function(){
-    Route::get('teste', function(){
-        return [
-            'id' => 1,
-            'client' => "Nilton Morais",
-            'total' => 10,
-        ];
+
+    Route::get('authenticated', function(){
+        $id = \LucaDegasperi\OAuth2Server\Facades\Authorizer::getResourceOwnerId();
+        return \CodeDelivery\Models\User::find($id);
     });
+
+    Route::group(['prefix'=>'client', 'as'=>'client.', 'middleware'=>'oauth.checkrole:client'],function(){
+        Route::resource('order','Api\Client\ClientCheckoutController', ['except'=>['create','edit','destroy']]);
+    });
+
+    Route::group(['prefix'=>'deliveryman', 'as'=>'deliveryman.', 'middleware'=>'oauth.checkrole:deliveryman'],function(){
+    });
+
 });

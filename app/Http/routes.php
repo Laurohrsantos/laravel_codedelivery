@@ -84,6 +84,8 @@ Route::group(['prefix'=>'api', 'as'=>'api.', 'middleware'=>'oauth'],function(){
     });
 
     Route::group(['prefix'=>'deliveryman', 'as'=>'deliveryman.', 'middleware'=>'oauth.checkrole:deliveryman'],function(){
+        Route::resource('order','Api\Deliveryman\DeliverymanCheckoutController', ['except'=>['create','edit','destroy','store']]);
+        Route::patch('order/{id}/update-status', ['uses'=>'Api\Deliveryman\DeliverymanCheckoutController@updateStatus','as'=>'order.update_status']);
     });
 
 });

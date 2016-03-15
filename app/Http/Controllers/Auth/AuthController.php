@@ -2,6 +2,7 @@
 
 namespace CodeDelivery\Http\Controllers\Auth;
 
+use CodeDelivery\Repositories\UserRepository;
 use CodeDelivery\User;
 use Validator;
 use CodeDelivery\Http\Controllers\Controller;
@@ -61,5 +62,13 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function authenticated(UserRepository $repository)
+    {
+        $id = \LucaDegasperi\OAuth2Server\Facades\Authorizer::getResourceOwnerId();
+        return $repository
+            ->skipPresenter(false)
+            ->find($id);
     }
 }

@@ -4,10 +4,10 @@
         <form name="form" ng-submit="login()">
             <div class="list">
                 <label class="item item-input">
-                    <input type="text" placeholder="Usuário" ng-model="user.username">
+                    <input type="text" placeholder="Usuário" ng-model="user.username" required="required">
                 </label>
                 <label class="item item-input">
-                    <input type="password" placeholder="Senha" ng-model="user.password">
+                    <input type="password" placeholder="Senha" ng-model="user.password" required="required">
                 </label>
             </div>
             <button type="submit" class="button button-full button-assertive">Enviar</button>

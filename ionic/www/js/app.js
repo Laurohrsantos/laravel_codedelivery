@@ -47,4 +47,14 @@ angular.module('starter', [
                 templateUrl: 'templates/login.html',
                 controller: 'LoginCtrl'
             })
+            .state('home', {
+                url: '/home',
+                templateUrl: 'templates/home.html',
+                controller: function($scope, $http){
+                    $http.get('http://localhost:8000/api/authenticated').then(function(data){
+                        $scope.user = data.data.data;
+                    });
+
+                }
+            })
     });

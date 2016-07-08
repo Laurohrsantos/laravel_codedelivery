@@ -1,6 +1,6 @@
 angular.module('starter.controllers',[])
     .controller('LoginCtrl', [
-        '$scope','$cookies','OAuth', function($scope,$cookies, OAuth){
+        '$scope','$state','$ionicPopup','OAuth', function($scope,$state,$ionicPopup, OAuth){
         $scope.user = {
             username: '',
             password: ''
@@ -8,10 +8,12 @@ angular.module('starter.controllers',[])
 
         $scope.login = function(){
             OAuth.getAccessToken($scope.user).then(function(data){
-                console.log("login functionando");
-                $cookies.getObject('token');
+                $state.go('home');
             },function(responseError){
-                console.log("error");
+                $ionicPopup.alert({
+                    title: "Erro",
+                    template: 'Credenciais inválidas!'
+                })
             });
         }
     }]);

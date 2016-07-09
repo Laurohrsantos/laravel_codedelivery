@@ -24,6 +24,7 @@ class ProductTransformer extends TransformerAbstract
             'id'         => (int) $model->id,
             'name'         => $model->name,
             'price'         => $model->price,
+            'description'         => $model->description,
         ];
     }
 }

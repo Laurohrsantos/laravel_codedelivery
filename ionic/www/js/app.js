@@ -10,7 +10,7 @@ angular.module('starter', [
         'ionic', 'starter.controllers','starter.services','angular-oauth2','ngResource'
     ])
     .constant('appConfig', {
-        baseUrl: 'http://localhost:8000'
+        baseUrl: 'http://localhost:8888'
     })
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {

@@ -23,7 +23,7 @@ angular.module('starter.controllers')
             $scope.save = function(){
                 var items = angular.copy($scope.items);
                 angular.forEach(items, function(item){
-                    item.product_it = item.id;
+                    item.product_id = item.id;
                 });
                 $ionicLoading.show({
                     template: 'Carregando...'

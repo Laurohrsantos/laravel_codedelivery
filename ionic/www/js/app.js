@@ -10,7 +10,7 @@ angular.module('starter', [
         'ionic', 'starter.controllers','starter.services','angular-oauth2','ngResource'
     ])
     .constant('appConfig', {
-        baseUrl: 'http://localhost:8888'
+        baseUrl: 'http://localhost:8000'
     })
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -82,6 +82,7 @@ angular.module('starter', [
                     controller: 'ClientCheckoutDetailCtrl'
                 })
                 .state('client.checkout_successful',{
+                    cache: false,
                     url: '/checkout/successful',
                     templateUrl: 'templates/client/checkout_successful.html',
                     controller: 'ClientCheckoutSuccessfulCtrl'

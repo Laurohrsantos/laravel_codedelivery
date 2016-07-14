@@ -1,0 +1,8 @@
+[14-Jul-2016 00:40:08 America/Sao_Paulo] PHP Deprecated:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set 'always_populate_raw_post_data' to '-1' in php.ini and use the php://input stream instead. in Unknown on line 0
+[14-Jul-2016 00:40:08 America/Sao_Paulo] PHP Warning:  Cannot modify header information - headers already sent in Unknown on line 0
+[14-Jul-2016 00:43:10 America/Sao_Paulo] PHP Deprecated:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set 'always_populate_raw_post_data' to '-1' in php.ini and use the php://input stream instead. in Unknown on line 0
+[14-Jul-2016 00:43:10 America/Sao_Paulo] PHP Warning:  Cannot modify header information - headers already sent in Unknown on line 0
+[14-Jul-2016 00:43:19 America/Sao_Paulo] PHP Deprecated:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set 'always_populate_raw_post_data' to '-1' in php.ini and use the php://input stream instead. in Unknown on line 0
+[14-Jul-2016 00:43:19 America/Sao_Paulo] PHP Warning:  Cannot modify header information - headers already sent in Unknown on line 0
+[14-Jul-2016 00:44:06 America/Sao_Paulo] PHP Deprecated:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set 'always_populate_raw_post_data' to '-1' in php.ini and use the php://input stream instead. in Unknown on line 0
+[14-Jul-2016 00:44:06 America/Sao_Paulo] PHP Warning:  Cannot modify header information - headers already sent in Unknown on line 0

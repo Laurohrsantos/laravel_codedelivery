@@ -48,7 +48,7 @@ angular.module('starter.controllers')
             };
 
             $scope.readQrCode = function(){
-                getValueCupom(283);
+                getValueCupom(397);
             };
 
             $scope.removeCupom = function(){

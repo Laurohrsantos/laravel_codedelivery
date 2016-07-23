@@ -10,7 +10,7 @@ angular.module('starter', [
         'ionic', 'starter.controllers','starter.services','angular-oauth2','ngResource'
     ])
     .constant('appConfig', {
-        baseUrl: 'http://localhost:8000'
+        baseUrl: 'http://192.168.0.100:8000'
     })
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -29,7 +29,7 @@ angular.module('starter', [
             }
         });
     })
-    .config(function ($stateProvider, $urlRouterProvider, OAuthProvider, OAuthTokenProvider, appConfig) {
+    .config(function ($stateProvider, $urlRouterProvider, OAuthProvider, OAuthTokenProvider, appConfig,$provide) {
         OAuthProvider.configure({
             baseUrl: appConfig.baseUrl,
             clientId: 'appid01',
@@ -44,7 +44,7 @@ angular.module('starter', [
             }
         });
 
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/login');
         $stateProvider
             .state('/', {
                 url: '/',
@@ -91,8 +91,34 @@ angular.module('starter', [
                     url: '/view_products',
                     templateUrl: 'templates/client/view_products.html',
                     controller: 'ClientViewProductCtrl'
-                })
-    })
-    .service('cart',function(){
-        this.items = [];
+                });
+
+        $provide.decorator('OAuthToken', ['$localStorage','$delegate',function($localStorage,$delegate){
+            Object.defineProperties($delegate,{
+                setToken: {
+                    value: function(data){
+                        return $localStorage.setObject('token',data);
+                    },
+                    enumerable: true,
+                    configurable: true,
+                    writable: true
+                },
+                getToken: {
+                    value: function(){
+                        return $localStorage.getObject('token');
+                    },
+                    enumerable: true,
+                    configurable: true,
+                    writable: true
+                },
+                removeToken: {
+                    value: function(){
+                        $localStorage.setObject('token',null);
+                    },
+                    enumerable: true,
+                    configurable: true,
+                    writable: true
+                }
+            });
+        }]);
     });

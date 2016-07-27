@@ -7,10 +7,10 @@ angular.module('starter.controllers',[]);
 angular.module('starter.services',[]);
 
 angular.module('starter', [
-        'ionic', 'starter.controllers','starter.services','angular-oauth2','ngResource'
+        'ionic', 'starter.controllers','starter.services','angular-oauth2','ngResource','ngCordova'
     ])
     .constant('appConfig', {
-        baseUrl: 'http://192.168.0.100:8000'
+        baseUrl: 'http://192.168.0.101:8000'
     })
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -119,6 +119,8 @@ angular.module('starter', [
                     configurable: true,
                     writable: true
                 }
+
             });
+            return $delegate;
         }]);
     });

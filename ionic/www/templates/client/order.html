@@ -1,0 +1,20 @@
+<ion-view>
+    <ion-nav-title>Meus pedidos</ion-nav-title>
+    <ion-content class="has-header">
+        <ion-list>
+            <ion-item ng-repeat="o in orders">
+                <div class="row">
+                    <div class="col">
+                        <h2>{{o.created_at.date|limitTo: 10|date: 'dd/MM/yyyy'}}</h2>
+                        <p>{{o.products_names | limitTo: 2}}</p>
+                        <i class="ion ion-ios-cart"> {{o.products_names.length}} items</i>
+                        <p>Status: {{o.atus_name}}</p>
+                    </div>
+                    <div class="col text-right">
+                        <i class="ion ion-social-usd"> {{o.total}}</i>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

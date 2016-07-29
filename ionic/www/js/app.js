@@ -10,7 +10,7 @@ angular.module('starter', [
         'ionic', 'starter.controllers','starter.services','angular-oauth2','ngResource','ngCordova'
     ])
     .constant('appConfig', {
-        baseUrl: 'http://192.168.0.101:8000'
+        baseUrl: 'http://192.168.10.102:8000'
     })
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -68,9 +68,16 @@ angular.module('starter', [
             .state('client',{
                 abstract: true,
                 url: '/client',
-                template: '<ion-nav-view/>'
+                templateUrl: 'templates/client/menu.html',
+                controller: 'ClientMenuCtrl'
             })
-                .state('client.checkout',{
+                .state('client.order',{
+                    cache: false,
+                    url: '/order',
+                    templateUrl: 'templates/client/order.html',
+                    controller: 'ClientOrderCtrl'
+                })
+            .state('client.checkout',{
                     cache: false,
                     url: '/checkout',
                     templateUrl: 'templates/client/checkout.html',

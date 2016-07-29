@@ -7,8 +7,4 @@ angular.module('starter.controllers')
             $scope.items = cart.items;
             $scope.total = $cart.getTotalFinal();
             $cart.clear();
-
-            $scope.openListOrder = function(){
-
-            };
     }]);

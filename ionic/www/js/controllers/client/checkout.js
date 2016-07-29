@@ -2,7 +2,6 @@ angular.module('starter.controllers')
     .controller('ClientCheckoutCtrl', [
         '$scope','$state','$cart','Order','$ionicLoading','$ionicPopup','Cupom','$cordovaBarcodeScanner',
         function($scope,$state,$cart,Order,$ionicLoading,$ionicPopup,Cupom,$cordovaBarcodeScanner){
-
             var cart = $cart.get();
 
             $scope.cupom = cart.cupom;

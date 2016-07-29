@@ -55,7 +55,7 @@ class ClientCheckoutController extends Controller
     {
         return $this->orderRepository
             ->skipPresenter(false)
-            ->with($this->with)->find($id);;
+            ->with($this->with)->find($id);
     }
 
     public function store(CheckoutRequest $request)

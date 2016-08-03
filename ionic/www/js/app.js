@@ -11,7 +11,7 @@ angular.module('starter', [
         'ionic', 'starter.controllers','starter.services','starter.filters','angular-oauth2','ngResource','ngCordova'
     ])
     .constant('appConfig', {
-        baseUrl: 'http://192.168.0.6:8000'
+        baseUrl: 'http://localhost:8000'
     })
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
@@ -105,7 +105,24 @@ angular.module('starter', [
                     url: '/view_products',
                     templateUrl: 'templates/client/view_products.html',
                     controller: 'ClientViewProductCtrl'
-                });
+                })
+            .state('deliveryman',{
+                abstract: true,
+                url: '/deliveryman',
+                templateUrl: 'templates/deliveryman/menu.html',
+                controller: 'DeliverymanMenuCtrl'
+            })
+                    .state('deliveryman.order',{
+                        url: '/order',
+                        templateUrl: 'templates/deliveryman/order.html',
+                        controller: 'DeliverymanOrderCtrl'
+                    })
+                    .state('deliveryman.view_order',{
+                        cache: false,
+                        url: '/view_order/:id',
+                        templateUrl: 'templates/deliveryman/view_order.html',
+                        controller: 'DeliverymanViewOrderCtrl'
+                    });
 
         $provide.decorator('OAuthToken', ['$localStorage','$delegate',function($localStorage,$delegate){
             Object.defineProperties($delegate,{

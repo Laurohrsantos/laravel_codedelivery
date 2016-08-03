@@ -24,7 +24,15 @@ angular.module('starter.controllers')
 
             $scope.save = function(){
                 var o = {items: angular.copy($scope.items)};
+
                 if($scope.cupom.value){
+                    if($scope.cupom.value > $scope.total){
+                        $ionicPopup.alert({
+                            title: "Erro",
+                            template: 'O valor do cupom é maior que o valor do pedido! Adicione mais itens no pedido ou remova o cupom.'
+                        });
+                        return;
+                    }
                     o.cupom_code = $scope.cupom.code;
                 }
 

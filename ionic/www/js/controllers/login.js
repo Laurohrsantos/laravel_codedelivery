@@ -1,31 +1,31 @@
 angular.module('starter.controllers')
     .controller('LoginCtrl', [
-        '$scope','$state','$ionicPopup','OAuth','$q', function($scope,$state,$ionicPopup, OAuth,$q){
-        $scope.user = {
-            username: '',
-            password: ''
-        };
+        '$scope', '$state', '$ionicPopup', 'UserData', 'User', 'OAuth', 'OAuthToken',
+        function ($scope, $state, $ionicPopup, UserData, User, OAuth, OAuthToken) {
 
-            function adiarExecucao(){
-                var deffered = $q.defer();
-                setTimeout(function(){
-                    deffered.resolve({name: "ionic"});
-                },2000);
-                return deffered.promise;
+            $scope.user = {
+                username: '',
+                password: ''
+            };
+
+
+            $scope.login = function () {
+                var promise = OAuth.getAccessToken($scope.user);
+                promise
+                    .then(function (data) {
+                        return User.authenticated({include: 'client'}).$promise;
+                    })
+                    .then(function (data) {
+                        UserData.set(data.data);
+                        $state.go('client.checkout');
+                }, function (responseError) {
+                    UserData.set(null);
+                    OAuthToken.removeToken();
+                    $ionicPopup.alert({
+                        title: "Erro",
+                        template: 'Credenciais inválidas!'
+                    });
+                    console.log(responseError);
+                });
             }
-
-            adiarExecucao().then(function(data){
-                console.log(data);
-            });
-
-        $scope.login = function(){
-            OAuth.getAccessToken($scope.user).then(function(data){
-                $state.go('client.checkout');
-            },function(responseError){
-                $ionicPopup.alert({
-                    title: "Erro",
-                    template: 'Credenciais inválidas!'
-                })
-            });
-        }
-    }]);
+        }]);

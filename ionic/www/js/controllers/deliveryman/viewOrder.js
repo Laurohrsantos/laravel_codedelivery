@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
     .controller('DeliverymanViewOrderCtrl', [
-        '$scope','$stateParams','$ionicLoading','Order',
-        function($scope,$stateParams,$ionicLoading,Order){
+        '$scope','$stateParams','$ionicLoading','DeliverymanOrder',
+        function($scope, $stateParams, $ionicLoading, DeliverymanOrder){
 
             $scope.order = {};
 
@@ -9,7 +9,7 @@ angular.module('starter.controllers')
                 template: 'Carregando...'
             });
 
-             Order.get({id: $stateParams.id,include: "items,cupom"},function(data){
+            DeliverymanOrder.get({id: $stateParams.id,include: "items,cupom"},function(data){
                 $scope.order = data.data;
                  $ionicLoading.hide();
              },function(responseError){

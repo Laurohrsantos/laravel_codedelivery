@@ -25,7 +25,7 @@ class UserTableSeeder extends Seeder
                  'password' => bcrypt(123456),
                  'remember_token' => str_random(10),
                  'role' => 'admin',
-        ])->client()->save(factory(\CodeDelivery\Models\Client::class)->make());
+        ]);
 
         factory(User::class)->create([
                  'name' => 'Deliveryman',
@@ -33,7 +33,7 @@ class UserTableSeeder extends Seeder
                  'password' => bcrypt(123456),
                  'remember_token' => str_random(10),
                  'role' => 'deliveryman',
-        ])->client()->save(factory(\CodeDelivery\Models\Client::class)->make());
+        ]);
 
         factory(User::class, 10)->create()->each(function($u){
             $u->client()->save(factory(\CodeDelivery\Models\Client::class)->make());

@@ -28,6 +28,7 @@ class OrderTransformer extends TransformerAbstract
             'status'         => (int) $model->status,
             'status_name'         => $this->getStatusName($model->status),
             'products_names' => $this->getArrayProductsNames($model->items),
+            'hash' => $model->hash,
 
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at,

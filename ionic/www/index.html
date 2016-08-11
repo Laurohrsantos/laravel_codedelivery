@@ -13,6 +13,7 @@
     -->
 
     <!-- ionic/angularjs js -->
+    <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/angular-cookies/angular-cookies.min.js"></script>
     <script src="lib/query-string/query-string.js"></script>
@@ -22,6 +23,9 @@
     <script src="lib/lodash/dist/lodash.min.js"></script>
     <script src="lib/angular-simple-logger/dist/angular-simple-logger.min.js"></script>
     <script src="lib/angular-google-maps/dist/angular-google-maps.min.js"></script>
+    <script src="lib/pusher/dist/pusher.min.js"></script>
+    <script src="lib/pusher-angular/lib/pusher-angular.min.js"></script>
+    <script src="lib/jquery.easing/js/jquery.easing.min.js"></script>
 
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <!-- cordova script (this will be a 404 during development) -->
@@ -51,6 +55,7 @@
     <script src="js/services/cart.js"></script>
     <script src="js/services/user.js"></script>
     <script src="js/services/userData.js"></script>
+    <script src="js/services/map.js"></script>
 
     <script src="js/filters/join.js"></script>
 </head>
@@ -60,5 +65,10 @@
 </ion-pane>
 
 <script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="lib/marker-animate-unobtrusive/vendor/markerAnimate.js"></script>
+<script src="lib/marker-animate-unobtrusive/dist/SlidingMarker.min.js"></script>
+<script type="text/javascript">
+    SlidingMarker.initializeGlobally();
+</script>
 </body>
 </html>

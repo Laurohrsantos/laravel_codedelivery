@@ -75,7 +75,8 @@ Route::group(['middleware' => 'cors'], function () {
 
     Route::group(['prefix' => 'api', 'as' => 'api.', 'middleware' => 'oauth'], function () {
 
-        Route::get('authenticated', 'Auth\AuthController@authenticated');
+        Route::get('authenticated', 'Api\UserController@authenticated');
+        Route::patch('device_token', 'Api\UserController@updateDeviceToken');
 
         Route::group(['prefix' => 'client', 'as' => 'client.', 'middleware' => 'oauth.checkrole:client'], function () {
             Route::resource('order', 'Api\Client\ClientCheckoutController', ['except' => ['create', 'edit', 'destroy']]);

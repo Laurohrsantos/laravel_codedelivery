@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
     .controller('DeliverymanViewOrderCtrl', [
-        '$scope','$stateParams','$ionicLoading','$ionicPopup','$cordovaGeolocation','DeliverymanOrder',
-        function($scope, $stateParams, $ionicLoading,$ionicPopup,$cordovaGeolocation,DeliverymanOrder){
+        '$scope','$state','$stateParams','$ionicLoading','$ionicPopup','$cordovaGeolocation','DeliverymanOrder',
+        function($scope,$state,$stateParams, $ionicLoading,$ionicPopup,$cordovaGeolocation,DeliverymanOrder){
 
             var watch;
 
@@ -17,6 +17,24 @@ angular.module('starter.controllers')
              },function(responseError){
                  $ionicLoading.hide();
              });
+
+            $scope.finishDelivery = function(){
+                DeliverymanOrder.updateStatus({id: $stateParams.id},{status: 2},function(data){
+                        $ionicPopup.alert({
+                            title: "Status do pedido",
+                            template: 'Pedido marcado como ENTREGUE!'
+                        }).then(function(){
+                            $state.go('deliveryman.order');
+                        });
+                    },function(){
+                    $ionicPopup.alert({
+                        title: "Erro",
+                        template: 'Erro ao alterar status do pedido'
+                    }).then(function(){
+                        $state.go('deliveryman.order');
+                    });
+                });
+                };
 
             $scope.goToDelivery = function(){
                 $ionicPopup.alert({

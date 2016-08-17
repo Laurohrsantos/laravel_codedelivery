@@ -8,14 +8,14 @@ angular.module('starter.services',[]);
 angular.module('starter.filters',[]);
 
 angular.module('starter', [
-        'ionic', 'starter.controllers','starter.services','starter.filters','angular-oauth2',
+        'ionic','ionic.service.core','starter.controllers','starter.services','starter.filters','angular-oauth2',
         'ngResource','ngCordova','uiGmapgoogle-maps','pusher-angular'
     ])
     .constant('appConfig', {
         baseUrl: 'http://localhost:8000',
         pusherKey: "d297bd422adda2eee688"
     })
-    .run(function ($ionicPlatform,$window,appConfig) {
+    .run(function ($ionicPlatform,$window,appConfig,$localStorage) {
         $window.client = new Pusher(appConfig.pusherKey);
         $ionicPlatform.ready(function () {
             if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -31,6 +31,22 @@ angular.module('starter', [
             if (window.StatusBar) {
                 StatusBar.styleDefault();
             }
+            Ionic.io();
+            var push = new Ionic.Push({
+                debug: true,
+                onNotification: function(message){
+                    alert(message.text);
+                },
+                pluginConfig: {
+                    android: {
+                        iconColor: "red"
+                    }
+                }
+            });
+            push.register(function(token){
+                $localStorage.set('device_token',token.token);
+            });
+
         });
     })
     .config(function ($stateProvider, $urlRouterProvider, OAuthProvider, OAuthTokenProvider, appConfig,$provide) {
@@ -124,6 +140,7 @@ angular.module('starter', [
                 controller: 'DeliverymanMenuCtrl'
             })
                     .state('deliveryman.order',{
+                        cache: false,
                         url: '/order',
                         templateUrl: 'templates/deliveryman/order.html',
                         controller: 'DeliverymanOrderCtrl'

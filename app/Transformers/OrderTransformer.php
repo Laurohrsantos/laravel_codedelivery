@@ -54,10 +54,14 @@ class OrderTransformer extends TransformerAbstract
                 break;
             }
             case 1: {
-                $statusName = "Entregue";
+                $statusName = "Saiu para entrega";
                 break;
             }
             case 2: {
+                $statusName = "Entregue";
+                break;
+            }
+            case 3: {
                 $statusName = "Cancelado";
                 break;
             }

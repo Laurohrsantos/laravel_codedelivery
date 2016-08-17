@@ -63,12 +63,4 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
-
-    public function authenticated(UserRepository $repository)
-    {
-        $id = \LucaDegasperi\OAuth2Server\Facades\Authorizer::getResourceOwnerId();
-        return $repository
-            ->skipPresenter(false)
-            ->find($id);
-    }
 }

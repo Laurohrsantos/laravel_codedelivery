@@ -2,6 +2,7 @@
 
 namespace CodeDelivery\Providers;
 
+use Dmitrovskiy\IonicPush\PushProcessor;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(PushProcessor::class,function(){
+            return new PushProcessor(env('IONIC_PROFILE'), env('IONIC_JWT_TOKEN'));
+        });
     }
 }
